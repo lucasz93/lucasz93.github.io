@@ -129,7 +129,6 @@ html {
 	left				: 0px;
 	padding				: 0px;
 	margin				: 0px;
-    height				: 400px;
     width				: 100%;
     position			: relative;
 }
@@ -138,7 +137,17 @@ html {
 {    
 	position			: relative; 
 	padding				: 0%;
-	height				: 90%;
+	width				: 90%;
+	
+	border				: 2px solid White;
+	border-radius		: 20px;
+}
+
+.projectPreviewHalf
+{    
+	position			: relative; 
+	padding				: 0%;
+	width				: 45%;
 	
 	border				: 2px solid White;
 	border-radius		: 20px;
@@ -148,7 +157,7 @@ html {
 {
 	position			: absolute; 
 	
-	top					: 70%; 
+	top					: 50%; 
 	left				: 15%; 
 	width				: 70%; 
 	padding-top			: 15px;
@@ -162,7 +171,7 @@ html {
 {
 	position			: absolute; 
 	
-	top					: 70%; 
+	top					: 50%; 
 	left				: 32.5%; 
 	width				: 35%; 
 	padding-top			: 15px;

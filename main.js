@@ -29,8 +29,7 @@ function home_generate_motd()
 	}
 	
 	var messages = new Array(
-		[ "A native programmer who got his hands on HTML" ],
-		[ "Proudly borrowing oxygen since 1993" ]
+		[ "i write code" ]
 	);
 	
 	var i = Math.random() * ( messages.length - 1 );
