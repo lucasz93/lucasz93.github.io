@@ -9,6 +9,8 @@
 		<base target="_parent" />
 		
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		
+		<script type="text/javascript" src="image_cycler.js"></script>
 	</head>
 	
 	<body id="mainBackground">
@@ -35,53 +37,7 @@
 							<div class="projectContainer">
 								<a class="projectLink" href="projects/foip.html">
 									<img class="projectPreview" src="images/pid/0.jpg"/>
-									<p class="projectText">Foip</p>
-								</a>
-							</div>
-						</td>
-						
-						<!-- Pathways Into Darkness -->
-						<td>
-							<div class="projectContainer">
-								<a class="projectLink" href="projects/pathways.html">
-									<img class="projectPreview" src="images/pid/0.jpg"/>
-									<p class="projectText">Pathways Into Darkness</p>
-								</a>
-							</div>
-						</td>
-					</tr>
-					
-					<!-- Second row. -->
-					<tr>
-						<!-- Black Mesa -->
-						<td>
-							<div class="projectContainer">
-								<a class="projectLink" href="projects/blackmesa.html">
-									<img class="projectPreview" src="images/bm/0.jpg"/>
-									<p class="projectText">Black Mesa</p>
-								</a>
-							</div>
-						</td>
-						
-						<!-- Giant Leap -->
-						<td>
-							<div class="projectContainer">
-								<a class="projectLink" href="projects/giantleap.html">
-									<img class="projectPreview" src="images/pid/5.jpg"/>
-									<p class="projectText">Giant Leap</p>
-								</a>
-							</div>
-						</td>
-					</tr>
-					
-					<!-- Fourth row. -->
-					<tr>
-						<!-- Holodeck -->
-						<td>
-							<div class="projectContainer">
-								<a class="projectLink" href="projects/holodeck.html">
-									<img class="projectPreview" src="images/pid/4.jpg"/>
-									<p class="projectText">Holodeck Interface</p>
+									<p class="projectTextSmall">Foip</p>
 								</a>
 							</div>
 						</td>
@@ -91,15 +47,72 @@
 							<div class="projectContainer">
 								<a class="projectLink" href="projects/pslr.html">
 									<img class="projectPreview" src="images/pid/3.jpg"/>
-									<p class="projectText">Pentax Camera Controller</p>
+									<p class="projectTextSmall">Pentax Camera Controller</p>
+								</a>
+							</div>
+						</td>
+						
+						<!-- Pathways Into Darkness -->
+						<td>
+							<div class="projectContainer">
+								<a class="projectLink" href="projects/pathways.html">
+									<img id="pidImg" class="projectPreview" src="images/pid/0.jpg"/>
+									<p class="projectTextSmall">Pathways Into Darkness</p>
+								</a>
+							</div>
+						</td>
+						
+						
+					</tr>
+					
+					<!-- Second row. -->
+					<tr>
+						<!-- Black Mesa -->
+						<td>
+							<div class="projectContainer">
+								<a class="projectLink" href="projects/blackmesa.html">
+									<img id="bmImg" class="projectPreview" src="images/bm/0.jpg"/>
+									<p class="projectTextSmall">Black Mesa</p>
+								</a>
+							</div>
+						</td>
+						
+						<!-- Giant Leap -->
+						<td>
+							<div class="projectContainer">
+								<a class="projectLink" href="projects/giantleap.html">
+									<img class="projectPreview" src="images/pid/5.jpg"/>
+									<p class="projectTextSmall">Giant Leap</p>
+								</a>
+							</div>
+						</td>
+						
+						<!-- Holodeck -->
+						<td>
+							<div class="projectContainer">
+								<a class="projectLink" href="projects/holodeck.html">
+									<img class="projectPreview" src="images/pid/4.jpg"/>
+									<p class="projectTextSmall">Holodeck Interface</p>
 								</a>
 							</div>
 						</td>
 					</tr>
 				</table>
-				
+				<br />
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+			install_change_handler( 3000 );
+			
+			// Pathways into Darkness.
+			var projImgs = [ ["images/pid/0.jpg"], ["images/pid/1.jpg"], ["images/pid/2.jpg"], ["images/pid/3.jpg"], ["images/pid/4.jpg"], ["images/pid/5.jpg"], ["images/pid/6.jpg"] ];
+			register_change_image( 'pidImg', projImgs );
+			
+			// Black Mesa.
+			var projImgs = [ ["images/bm/0.jpg"], ["images/bm/1.jpg"], ["images/bm/2.jpg"] ];
+			register_change_image( 'bmImg', projImgs );
+		</script>
 		
 	</body>
 	
