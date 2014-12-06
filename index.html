@@ -30,31 +30,31 @@
 				<table class="projectTable" width="100%">
 					<tr>
 						<!-- Projects -->
-						<td>
+						<td width="33%">
 							<div class="projectContainer">
 								<a class="projectLink" href="projects.html">
-									<img id="projImg" class="projectPreview" src="images/pid/2.jpg"/>
-									<p class="projectTextSmall">Projects</p>
+									<img id="projImg" class="projectPreview" src="images/pid/2_thumb.jpg"/>
+									<p class="projectTextMedium">Projects</p>
 								</a>
 							</div>
 						</td>
 						
 						<!-- Astrophotography -->
-						<td>
+						<td width="33%">
 							<div class="projectContainer">
 								<a class="projectLink" href="astrophotography.html">
-									<img id="astroImg" class="projectPreview" src="images/pid/3.jpg"/>
-									<p class="projectTextSmall">Astrophotography</p>
+									<img id="astroImg" class="projectPreview" src="images/astro/M_42_thumb.jpg"/>
+									<p class="projectTextMedium">Astrophotography</p>
 								</a>
 							</div>
 						</td>
 						
 						<!-- About Me. -->
-						<td>
+						<td width="33%">
 							<div class="projectContainer">
 								<a class="projectLink" href="about.html">
 									<img class="projectPreview" src="images/meta.jpg"/>
-									<p class="projectTextSmall">About</p>
+									<p class="projectTextMedium">About</p>
 								</a>
 							</div>
 						</td>
@@ -68,12 +68,12 @@
 		
 		<script type="text/javascript">
 			home_generate_motd();
-			install_change_handler( 2500 );
+			install_change_handler( 2000 );
 			
-			var projImgs = [ ["images/pid/0.jpg"], ["images/pid/1.jpg"] ];
+			var projImgs = [ ["images/pid/0_thumb.jpg"], ["images/pid/1_thumb.jpg"] ];
 			register_change_image( 'projImg', projImgs );
 			
-			var astroImgs = [ ["images/bm/0.jpg"], ["images/bm/1.jpg"] ];
+			var astroImgs = [ ["images/astro/M_16_thumb.jpg"], ["images/astro/M_42_thumb.jpg"], ["images/astro/M_83_thumb.jpg"], ["images/astro/Moon_Half_thumb.jpg"], ["images/astro/Sol_12-10-13_thumb.jpg"] ];
 			register_change_image( 'astroImg', astroImgs );
 		</script>
 		
