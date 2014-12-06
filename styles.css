@@ -25,6 +25,17 @@
 	text-align			: center;
 }
 
+.sectionBody {
+	margin				: 0;
+	color				: White;
+	
+	font-family			: tahoma;
+	font-size			: 14px;
+	font-weight			: normal;
+	text-decoration		: none;
+	text-align			: center;
+}
+
 html {
 	height				: 100%;
 }
