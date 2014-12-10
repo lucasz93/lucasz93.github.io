@@ -36,11 +36,17 @@
 				<br />
 				
 				<p class="sectionBody">The Pathways into Darkness (referred to from now as PiD) engine that I have created doesn't use any existing game engines. 
-				With the exception of wxWidgets and PortAudio (both used for portability concerns) the entire PiD engine was rewritten from scratch.
+				With the exception of wxWidgets and PortAudio (both used for portability concerns) the entire PiD engine was developed from scratch.
 				The original game data (levels, sounds, textures, etc) are used as input, and all algorithms within the engine have been designed around the original data.</p>
 				<p class="sectionBody">I drew off existing research performed by several individuals from the <a href="http://pid.bungie.org/">pid.bungie.org</a> message boards. 
 				Where the research was left unclear I performed my own, often in the form of playing the original game (with cheats enabled, hang me!).
 				The final result was each of the original PiD monster, weapon and item behaviours being surprisingly close to the original game.</p>
+				<p class="sectionBody">PiD loads data from the 3 variants of the original PiD game:</p>
+				<ul>
+					<li class="sectionBody">A1 Demo: The first demo of PiD released in July 1993.</li>
+					<li class="sectionBody">PiD V2: An updated version of the original PiD game that featured texture mapped floors.</li>
+					<li class="sectionBody">V2 Demo ("Power Pathways"): The second demo of PiD released in April 1994.</li>
+				</ul>
 				<br />
 				
 				<p class="sectionBodyBold">Modules</p>
@@ -49,7 +55,7 @@
 					<li class="sectionBody">Rendering - The renderer is a 2.5D renderer: the world is 3D but all objects are represented by 2D sprites.</li>
 					<li class="sectionBody">Sound - The sound system supports stereo audio, where sounds within the world are computed for their effect on the players left and right ears.</li>
 					<li class="sectionBody">Collision - The collision system is written from the ground up, featuring bounding rectangles and ray tracing.</li>
-					<li class="sectionBody">Pack Files - All asset files are grouped into a single binary file and can be individually loaded.</li>
+					<li class="sectionBody">Pack Files - All asset files are grouped into a single binary file, which can have individual assets loaded into memory.</li>
 					<li class="sectionBody">AI - Monsters are able to identify and follow paths to the player, then attack the player when within range.</li>
 				</ul>
 				<br />
@@ -61,19 +67,20 @@
 						At the beginning of the project I knew next to nothing about software design (and nothing about game engine design). 
 						This lead to several false starts where the entire codebase was thrown away due to its "design" becoming a pile of hacks. 
 						(Fun fact: the iteration shown in screenshots below is my eighth and final PiD implementation).</li>
-					<li class="sectionBody">Memory Management - Early iterations of my PiD engine allocated blocks of memory for static variables (such as the current level layout, current level state, etc). This memory was never freed upon application exit.
-						The same engine iterations also had many small (hundreds of bytes to several kilobytes) memory allocations at runtime, which were usually local to a single function.
-						The current PiD engine only allocates memory on game load and deallocates all memory on shutdown, and has no allocations at runtime.</li>
+					<li class="sectionBody">Specialisation - Prior to beginning PiD, I had not been exposed to areas such as rendering, sound and AI. 
+						This presented the problem of using a programming language (with which I was somewhat familiar) in a completely different way than I ever had before (just writing simple console applications).</li>
 					<li class="sectionBody">Existing Data - Since the original game files were used as input, the PiD engine required the creation of algorithms around an existing data set.
 						This was an interesting puzzle because all the pieces I needed were in front of me, but I needed to determine what transformations to the data would give me the desired result. In some cases this was very easy (such as an indexed linked list for the players inventory) and other cases quite difficult (such as determining the texture collection, shape and palette for world objects).</li>
+					<li class="sectionBody">Algorithms - The main challenging algorithms were the raycasting and collision algorithms. PiD levels consists of a matrix of map tiles. Each tile can have a combination of walls on the X and Y axis, and cutoff corners on the tile edges. These combinations made it difficult to apply the standard Wolf3D raycasting algorithm. As such, I was required to create my own raycasting algorithm which factored in the combinations of walls and corners in PiD levels.</li>
 				</ul>
 				<br />
 				
 				<p class="sectionBodyBold">Lessons</p>
 				<ul>
 					<li class="sectionBody">Algorithms and Data Structures - applying existing algorithms and data structures to problems. Example applications include: A* search for monster pathfinding and binary heap for object depth sorting.</li>
+					<li class="sectionBody">Algorithms - Development and debugging methods of custom and predefined algorithms.</li>
 					<li class="sectionBody">Design - make module interfaces well defined, be 100% clear on the problem and solution before writing any code.</li>
-					<li class="sectionBody">Memory management - manipulating raw memory for a useful purpose (such as resizing a bitmap).</li>
+					<li class="sectionBody">Memory manipulation - manipulating raw memory for an abstract purpose (such as resizing a bitmap).</li>
 					<li class="sectionBody">Importance of comments and clear code.</li>
 				</ul>
 				<br />
@@ -137,16 +144,45 @@
 					<!-- First row. -->
 					<tr>
 						<td>
-							<p class="sectionBody">1. General gameplay (doors, shooting, AI, crystals, etc)</p>
-							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/lIyCNgUfBhQ" frameborder="0" allowfullscreen></iframe>
+							<p class="sectionBodyBold" align="center">Ray Tracing Overview</p>
+							<p class="sectionBody" align="center">This video shows the first person and top-down views of the A1 Demo level "Pathways into Darkness".</p>
+							<p class="sectionBody" align="center">The red line represents the player's current direction.</p>
+							<p class="sectionBody" align="center">The yellow lines represent traced rays which are used to determine the areas of the map are visible to the player's flashlight. Iif a monster can see the flashlight, the monster becomes active.</p>
+							<p class="sectionBody" align="center">(The "mesusa" cheat was active during this video. Any monster that could see the player's flashlight would turn to stone).</p>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/Ug9OqLqTGPY" frameborder="0" allowfullscreen></iframe>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/1h8E8KtJSmE" frameborder="0" allowfullscreen></iframe>
+							<p></p>
 						</td>
 					</tr>
 					
 					<!-- Second row. -->
 					<tr>
 						<td>
-							<p class="sectionBody">2. Debug overview mode (ray tracing + pathfinding)</p>
-							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/lIyCNgUfBhQ" frameborder="0" allowfullscreen></iframe>
+							<p class="sectionBodyBold" align="center">AI Overview</p>
+							<p class="sectionBody" align="center">This video shows how the ray tracing shown in the "Ray Tracing Overview" gives hints the monster\pathfinding system.</p>
+							<p class="sectionBody" align="center">Squares that are purple are currently touched by the flashlight. If a monster is next to or within a purple square it begins hunting the player.</p>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/-2erHo30R7M" frameborder="0" allowfullscreen></iframe>
+							<p></p>
+						</td>
+					</tr>
+					
+					<!-- Third row. -->
+					<tr>
+						<td>
+							<p class="sectionBodyBold" align="center">PiD v2 Gameplay</p>
+							<p class="sectionBody" align="center">This video shows a small snippet of the PiD gameplay on the level "Never Stop Firing".</p>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/6V8NgZ1_rtI" frameborder="0" allowfullscreen></iframe>
+							<p></p>
+						</td>
+					</tr>
+					
+					<!-- Fourth row. -->
+					<tr>
+						<td>
+							<p class="sectionBodyBold" align="center">A1 Demo Gameplay</p>
+							<p class="sectionBody" align="center">This video shows a small snippet of the PiD gameplay on the level "Witness Total Carnage".</p>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/3oG-QhYVmKA" frameborder="0" allowfullscreen></iframe>
+							<p></p>
 						</td>
 					</tr>
 				</table>
