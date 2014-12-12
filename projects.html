@@ -32,6 +32,16 @@
 				<table class="projectTable" width="100%">
 					<!-- First row. -->
 					<tr>
+						<!-- Pathways Into Darkness -->
+						<td>
+							<div class="projectContainer">
+								<a class="projectLink" href="projects/pathways.html">
+									<img id="pidImg" class="projectPreview" src="images/pid/0_thumb.jpg"/>
+									<p class="projectTextMedium">Pathways Into Darkness</p>
+								</a>
+							</div>
+						</td>
+						
 						<!-- Foip -->
 						<td>
 							<div class="projectContainer">
@@ -46,23 +56,11 @@
 						<td>
 							<div class="projectContainer">
 								<a class="projectLink" href="projects/pslr.html">
-									<img class="projectPreview" src="images/fixit.gif"/>
-									<p class="projectTextMedium">Pentax Camera Controller</p>
+									<img id="pslrImg" class="projectPreview" src="images/pslr/0_thumb.jpg"/>
+									<p class="projectTextMedium">DroidSLR</p>
 								</a>
 							</div>
 						</td>
-						
-						<!-- Pathways Into Darkness -->
-						<td>
-							<div class="projectContainer">
-								<a class="projectLink" href="projects/pathways.html">
-									<img id="pidImg" class="projectPreview" src="images/pid/0_thumb.jpg"/>
-									<p class="projectTextMedium">Pathways Into Darkness</p>
-								</a>
-							</div>
-						</td>
-						
-						
 					</tr>
 					
 					<!-- Second row. -->
@@ -112,6 +110,10 @@
 			// Black Mesa.
 			var projImgs = [ ["images/bm/0_thumb.jpg"], ["images/bm/1_thumb.jpg"], ["images/bm/2_thumb.jpg"] ];
 			register_change_image( 'bmImg', projImgs );
+			
+			// PSLR.
+			var projImgs = [ ["images/pslr/0_thumb.jpg"] ];
+			register_change_image( 'pslrImg', projImgs );
 		</script>
 		
 	</body>

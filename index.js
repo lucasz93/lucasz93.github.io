@@ -16,8 +16,7 @@ function home_generate_motd()
 	}
 	
 	var messages = new Array(
-		[ "i write code" ],
-		[ "i take photos" ]
+		[ "i write code" ]
 	);
 	
 	var i = Math.random() * ( messages.length - 1 );

@@ -2,7 +2,7 @@
 <html lang="en">
 
 	<head>
-		<title>PSLR | Lucas Zadrozny</title>
+		<title>DroidSLR | Lucas Zadrozny</title>
 		<meta charset="utf8" />
 		
 		<!-- Force the below links to change the parent window, not the iframe. -->
@@ -22,57 +22,63 @@
 			<!-- Setup the body. -->
 			<div id="body">
 	
-				<p class="sectionTitle">PSLR</p>
-				<p class="sectionSubtitle">Pentax Camera Controller for Android.</p>
+				<p class="sectionTitle">DroidSLR</p>
+				<p class="sectionSubtitle">pentax camera controller for android.</p>
 				<hr />
-				<br />
 				
 				<p class="sectionSubtitle">OVERVIEW</p>
-				<p class="sectionBody">Overview goes here.</p>
+				<p class="sectionBody">DroidSLR was a project I began in late 2013 with the purpose of increasing my astrophotography capability. The camera that I had purchased to take long exposures was limited (in software) to 30 seconds. For faint objects such as nebulae and galaxies this was a very large problem.</p>
+				<p class="sectionBody">After researching online I came across a library named <a href="http://pktriggercord.sourceforge.net/">pkTriggerCord</a> that allowed Windows and Linux based PCs to control a Pentax DSLR camera over a USB connection.</p>
+				<p class="sectionBody">After experimenting with pkTriggerCord, I found it suitable for my purpose and began the development of DroidSLR.</p>
+				<br />
+				<p class="sectionBody"><i>NOTE: As of November 2014 pkTriggerCord has released an experimental Android version.</i></p>
+				<br />
+				<p class="sectionBody">Since I didn't want to carry a laptop around with my telescope I began investigating using an Android tablet to control my camera. After rooting one of my older (Android 2.1) tablets and compiling a "Hello World" application that used pkTriggerCord to open a connection to the camera, I began development on DroidSLR.</p>
+				<br />
+				<p class="sectionBody">The application consists of three main parts:</p>
+				<ol>
+					<li class="sectionBody">pkTriggerCord - Handles camera communication.</li>
+					<li class="sectionBody">GUI - Modifies the camera state through pkTriggerCord.</li>
+					<li class="sectionBody">Polling - Checks for any images in the camera buffers through pkTriggerCord.</li>
+				</ol>
+				<p class="sectionBody">Since polling occurs separate from the GUI thread, it became possible to issue multiple commands to the camera at the same time (the camera <i>really</i> didn't like that). To combat this problem, I created a thread safe wrapper around the pkTriggerCord library which was exposed to Java through the JNI.</p>
+				<p class="sectionBody">DroidSLR allows users to customize an assortment of options such as:</p>
+				<ul>
+					<li class="sectionBody">Saved image location</li>
+					<li class="sectionBody">Saved image format</li>
+					<li class="sectionBody">Exposure length</li>
+					<li class="sectionBody">Exposure count</li>
+					<li class="sectionBody">Exposure delay</li>
+					<li class="sectionBody">Drive mode (single shot, burst shot, etc)</li>
+				</ul>
 				<br />
 				
+				<p class="sectionBodyBold">Challenges</p>
+				<ul>
+					<li class="sectionBody">Low Level Library - pkTriggerCord is a low level library. Functionality that should be simple (such as checking image buffers for a new image, retrieving images from a buffer, setting the current EV table, etc) require significant library calls. This became so much of an issue I created my own utility library for pkTriggerCord to make this "simple" functionality only a single function call away.</li>
+					<li class="sectionBody">Android Tools - Just kidding but no really.</li>
+				</ul>
+				
+				<br />
+				<p class="sectionBodyBold">Lessons</p>
+				<ul>
+					<li class="sectionBody">JNI - Exposing C functions to Java code.</li>
+					<li class="sectionBody">Make no assumptions in threaded environments.</li>
+				</ul>
+				
+				<hr />
 				<p class="sectionSubtitle">SCREENSHOTS</p>
 				<table class="projectTable" width="100%">
 					<!-- First row. -->
 					<tr>
 						<td>
 							<div class="projectContainer">
-								<a href="../images/pid/0.jpg"><img class="projectPreview" src="../images/fixit.gif"/></a>
-							</div>
-						</td>
-						
-						<td>
-							<div class="projectContainer">
-								<a href="../images/pid/1.jpg"><img class="projectPreview" src="../images/fixit.gif"/></a>
-							</div>
-						</td>
-						
-						<td>
-							<div class="projectContainer">
-								<a href="../images/pid/2.jpg"><img class="projectPreview" src="../images/fixit.gif"/></a>
-							</div>
-						</td>
-						
-						<td>
-							<div class="projectContainer">
-								<a href="../images/pid/3.jpg"><img class="projectPreview" src="../images/fixit.gif"/></a>
+								<a href="../images/pslr/0.jpg"><img style="width : 25%" class="projectPreview" src="../images/pslr/0_thumb.jpg"/></a>
 							</div>
 						</td>
 					</tr>
 				</table>
-				<br />
-				
-				<p class="sectionSubtitle">VIDEO</p>
-				<table class="projectTable" width="100%">
-					<!-- First row. -->
-					<tr>
-						<td>
-							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/lIyCNgUfBhQ" frameborder="0" allowfullscreen></iframe>
-						</td>
-					</tr>
-				</table>
-				<br />
-				
+				<br />				
 			</div>
 		</div>
 		
