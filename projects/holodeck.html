@@ -23,15 +23,93 @@
 			<div id="body">
 	
 				<p class="sectionTitle">HOLODECK</p>
-				<p class="sectionSubtitle">Template Subtitle.</p>
+				<p class="sectionSubtitle">final year university project</p>
 				<hr />
-				<br />
 				
 				<p class="sectionSubtitle">OVERVIEW</p>
 				<p class="sectionBody">Overview goes here.</p>
 				<br />
 				
-				<p class="sectionSubtitle">SCREENSHOTS</p>
+				<p class="sectionBody">The major features of this project are:</p>
+				<ul>
+					<li class="sectionBody">Leap Motion integration into the Source Engine.</li>
+					<li class="sectionBody">Gesture panels.</li>
+					<li class="sectionBody">Custom gesture recognition.</li>
+					<li class="sectionBody">Interactive world space GUI panels.</li>
+					<li class="sectionBody">Multiple Leap Motion devices working within the same application (see <a href="giantleap.html">Giant Leap</a>).</li>
+					<li class="sectionBody">Positional head tracking for the Rift DK1.</li>
+					<li class="sectionBody">Eletro-tactile interface integration.</li>
+				</ul>
+				<br />
+				
+				<p class="sectionBody">The Holodeck system supports a large amount of hardware:</p>
+				<ul>
+					<li class="sectionBody">Oculus Rift (visual output).</li>
+					<li class="sectionBody">1 or more Leap Motions (world interaction).</li>
+					<li class="sectionBody">A joystick that supports pitch, roll and yaw (player movement).</li>
+					<li class="sectionBody">Razer Hydra (positional head tracking for the Rift DK1, not required for other Rift models).</li>
+					<li class="sectionBody">Electrotactile interface (interaction output, not required but enhances VR immersion).</li>
+				</ul>
+				<br />
+				
+				<p class="sectionBody">There are two types of users for the Holodeck system:</p>
+				<ol>
+					<li class="sectionBody">End users simply setup all equipment required by the Holodeck system and launch a Holodeck ready game.</li>
+					<li class="sectionBody">Developers create custom gestures, place gesture panels, tactile volumes and other entities within the VR world.</li>
+				</ol>
+				<br />
+				
+				<p class="sectionBodyBold">Gesture Panels</p>
+				<p class="sectionBody">Gesture panels are invisible volumes that enable gesture based control of the world. There are 3 types of gesture panels supported by Holodeck:</p>
+				<ol>
+					<li class="sectionBody">Swipe - the user must swipe their hand in a predefined direction (or against the direction).</li>
+					<li class="sectionBody">Circle - the user must draw a circle in the air with their finger for a length of time.</li>
+					<li class="sectionBody">Tap - the user must "press a button" in a predefined direction.</li>
+				</ol>
+				<p class="sectionBody">Each of the above panels have fire map events that can be used by level designers to script different types of events. Shown below are examples.</p>
+				<p class="sectionBody">Swipe Panel (hula doll)
+					********TODO*************</p>
+				
+				<p class="sectionBody">Circle Panel (door)
+					********TODO*************</p>
+				
+				<p class="sectionBody">Tap Panel (vending machine)
+					********TODO*************</p>
+				<br />
+				
+				<p class="sectionBodyBold">Gesture Detection</p>
+				<p class="sectionBody">The Holodeck system allows developers to create custom gestures by specifying the relative angles of the users fingers (with a degree of forgiveness).</p>
+				<p class="sectionBody">The Holodeck system provides the ability to "listen" for each gesture type (swipe, circle, tap) regardless of the users current location. 
+					This allows level designers to perform player specific actions anywhere in the world (eg: swipe left to display the HUD, swipe right to hide).
+					Programmers are able to extend this system by implementing dedicated gesture listeners which can detect custom gestures and use gesture information to modify the world in a more meaningful way. Level designers are free to activate and deactivate gesture listeners at runtime which allows for area specific gestures to be recognized and processed.
+					********VIDEO OF EDEN, TUTORIAL FOR SETUP*************VIDEO OF GUI PANEL*************</p>
+				<p class="sectionBody">Some gestures require pure code detection and handling. These gestures should revolve around core gameplay (such as shooting a gun and picking up objects).*************VIDEO OF GUNS, PICKUP*************</p>
+				<br />
+				
+				<p class="sectionBodyBold">Electrotactile Interface</p>
+				<p class="sectionBody">The Electrotactile Interface (referred to now as ETI) is a device that uses a range of electric pulses to provide the user with feedback from the VR environment.
+					Much like gesture detection, the ETI can be powered through code and </p>
+				<p class="sectionBody">With the addition of the ETI, the Holodeck system could cause large and prolonged amounts of physical pain to the user.
+					Because of this, the code was required to be rock solid and very forgiving (such as disabling the device during loading screens, </p>
+				<p class="sectionBody">Can be pure code (guns, UI, etc)</p>
+				<p class="sectionBody">Integrated into Hammer, completely customizable</p>
+				<br />
+				
+				<p class="sectionBodyBold">Challenges</p>
+				<ul>
+					<li class="sectionBody">Feature Creep - </li>
+				</ul>
+				<br />
+				
+				<p class="sectionBodyBold">Lessons</p>
+				<ul>
+					<li class="sectionBody">Risk Management - Using unknown technology was risky. Using the Source Engine (a technology with which I was familiar) reduced the long term risk that another game engine would be too much to learn on top of the Rift, Leap, Hydra and Electrotactile Interface.</li>
+					<li class="sectionBody">More features doesn't necessarily mean the product will be better. Sometimes it makes the product more complicated. Complete hardware setup time was usually around 10-15 minutes (more if the Giant Leap application was used).</li>
+				</ul>
+				<br />
+				
+				<hr />
+				<p class="sectionSubtitle">PICTURES</p>
 				<table class="projectTable" width="100%">
 					<!-- First row. -->
 					<tr>
@@ -62,12 +140,14 @@
 				</table>
 				<br />
 				
+				<hr />
 				<p class="sectionSubtitle">VIDEO</p>
 				<table class="projectTable" width="100%">
 					<!-- First row. -->
 					<tr>
 						<td>
-							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/lIyCNgUfBhQ" frameborder="0" allowfullscreen></iframe>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/2D4mbLp-JX0" frameborder="0" allowfullscreen></iframe>
+							<iframe align="middle" width="420" height="315" src="http://www.youtube.com/embed/i3IiFezjhnM" frameborder="0" allowfullscreen></iframe>
 						</td>
 					</tr>
 				</table>
