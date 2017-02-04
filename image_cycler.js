@@ -46,13 +46,13 @@ function change_random_image()
 	do
 	{
 		ele = Math.floor( Math.random() * Cycler.length );
-	// If `Cycler.length` == 1, then this is an infinite loop.
+	// If `Cycler.length` == 1, then this would be an infinite loop.
 	} while( ele == Cycler.last && Cycler.length > 1 );
 	
 	do
 	{
 		img = Math.floor( Math.random() * Cycler[ele].paths.length );
-	// If `Cycler[ele].paths.length` == 1, then this is an infinite loop.
+	// If `Cycler[ele].paths.length` == 1, then this would also be an infinite loop.
 	} while( img == Cycler[ele].current && Cycler[ele].paths.length > 1 );
 	
 	// Update the image.
