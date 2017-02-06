@@ -16,7 +16,7 @@ function home_generate_motd()
 	}
 	
 	var messages = new Array(
-		[ "Software engineer, photographer, racer" ]
+		[ "programmer, photographer, driver" ]
 	);
 	
 	var i = Math.random() * ( messages.length - 1 );
