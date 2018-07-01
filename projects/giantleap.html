@@ -26,8 +26,8 @@
 				<p class="sectionSubtitle">massive detection space, unparalleled accuracy</p>
 				<hr />
 				
-				<p class="sectionSubtitle">OVERVIEW</p>
-				<p class="sectionBody">Giant Leap is an application I created as part of my final year project (see <a href="./holodeck.html">Holodeck Interface</a> for more details) at the University of Wollongong. From very early on in the project, it was apparent the Leap Motion suffered from a serious flaw for VR applications: limited detection space.</p>
+				<p class="sectionSubtitle">SUMMARY</p>
+				<p class="sectionBody">Giant Leap is an application I created as part of my final year project (<a href="./holodeck.html">Holodeck Interface</a>) at the University of Wollongong. From very early on in the project, it was apparent the Leap Motion suffered from a serious flaw for VR applications: limited detection space.</p>
 				<p class="sectionBody">The Giant Leap application had several objectives:</p> 
 				<ul>
 					<li class="sectionBody">Allow multiple Leap Motion devices to feed input to a single Leap Motion application.</li>
@@ -36,37 +36,13 @@
 					<li class="sectionBody">To increase the Leap Motion signal to noise ratio.</li>
 				</ul>
 				<br />
-				<p class="sectionBody"><i>NOTE: The Leap Motion drivers only began to support head-mounting when the Holodeck Interface project was two weeks from the due date. The head-mounting feature made Giant Leap obsolete for VR applications, but it still has uses outside VR.</i></p> 
-				<br />
 				
-				<p class="sectionBody">The Leap Motion drivers made the straightforward development of this application difficult. The drivers don't allow more than one Leap Motion device to be active on a PC at any given time, regardless of the number of devices physically connected to the PC. Because of this Giant Leap works over a network of PCs which all act as slaves (collecting data from the local PC and transmitting it to the Giant Leap master integrated within the host application).</p>
 				<p class="sectionBody">Depending on the number of spare PCs and Leap Motion devices available, Giant Leap can be used in one or more ways:</p>
 				<ol>
 					<li class="sectionBody">Detection Space - Multiple Leap Motion devices can be placed in a line to increase the hand detection space available to the target application.</li>
 					<li class="sectionBody">Signal-to-Noise Ratio - By placing multiple Leap Motion devices directly next to each other, Giant Leap will average the skeletons detected by the Leap Motion devices producing a more accurate representation of the users hands.</li>
 				</ol>
-				<p class="sectionBody">Giant Leap used custom frame processing algorithms that dealt with two cases: <i>1 slave</i>, and <i>n slaves</i>. 
-					The <i>1 slave</i> case was trivial, and the <i>n slaves</i> case used custom frame merging algorithms that (in theory) scale for all <i>n</i>. In reality, up to 4 Giant Leap slaves have been run simultaneously. (Four Leap Motion devices allowed for a detection space that spanned the users maximum reach).</p>
-				<br />
-				
-				<p class="sectionBodyBold">Challenges</p>
-				<ul>
-					<li class="sectionBody">Real Time - The frame processing and merging overhead for multiple Giant Leap slaves had to remain (ideally) under 16ms (the time required to reach 60 FPS).</li>
-					<li class="sectionBody">API Reimplementation - Recreating the behaviour of the Leap SDK was mainly difficult in one area: shared object scope. Because of the Leap SDK interface model (see "Lessons"), a custom shared pointer class was implemented by Leap Motion. The shared pointer class wrapped implementation objects and had some subtleties in its use (there were some occasions where shared points would be acquired, but the reference count not incremented). Identifying these occasions was necessary to match the scope of objects returned through the Leap SDK API.</li>
-					<li class="sectionBody">Slave Merging - The main problem for the Giant Leap master was assembling frames received from all slaves into a single frame. 
-						Each slave was at the origin of its coordinate system, and each slave assigned different IDs to the same physical hand. 
-						This was solved by transforming each slave frame by a vector that moved the frame to an offset from the user defined origin.
-						This allowed hands from different frames to be matched based on their proximity to each other. Merging was then performed using a weighted average.<br />
-						An even larger problem was determining the weights assigned to each hand-slave pair! This was solved by assigning a scalar to each hand-slave pair based on the angle between the hand-palm normal and hand-slave device direction vector. In plain English: the weighting of a hand increases as the palm becomes perpendicular to the device of its slave.</li>
-				</ul>
-				<br />
-				
-				<p class="sectionBodyBold">Lessons</p>
-				<ul>
-					<li class="sectionBody">Interface Model - Before this project I was only familiar with the inherited interface model. The Leap SDK used an interface object that wrapped an implementation object. Even though it wasn't a difficult concept, it was an interface model that I had not previously come across.</li>
-					<li class="sectionBody">Given access to enough time, resources and motivation it is possible to overcome limitations in some hardware devices.</li>
-				</ul>
-				<br />
+				<p class="sectionBody">Four Leap Motions were tested with Giant Leap which covered a seated users entire reach.</p>
 				
 				<hr />
 				<p class="sectionSubtitle">PICTURES</p>
